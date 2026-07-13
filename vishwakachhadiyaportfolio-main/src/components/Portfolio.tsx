@@ -45,7 +45,7 @@ const publications = [
   },
   {
     title: "Enhancing Semantic Coherence in Gujarati Topic Models by Eliminating Poor Quality Topics",
-    meta: "March 2026"
+    meta: "March 2026",
     venue: "8th Parul University Conference",
   },
   {
@@ -268,13 +268,13 @@ export default function Portfolio() {
           Open to research collaborations and AI engineering roles.
         </p>
         <div className={styles.contactLinks} data-reveal>
-          <a className={`${styles.contactLink} ${styles.primary}`} href="mailto:vishwa.kachhadiya@example.com">
+          <a className={`${styles.contactLink} ${styles.primary}`} href="mailto:vishwa.kachhadiyaa@gmail.com">
             Say hello
           </a>
-          <a className={styles.contactLink} href="https://linkedin.com" target="_blank" rel="noreferrer">
+          <a className={styles.contactLink} href="https://www.linkedin.com/in/vishwakachhadiya/" target="_blank" rel="noreferrer">
             LinkedIn
           </a>
-          <a className={styles.contactLink} href="https://github.com" target="_blank" rel="noreferrer">
+          <a className={styles.contactLink} href="https://github.com/vishwa-kachhadiya" target="_blank" rel="noreferrer">
             GitHub
           </a>
           <a className={styles.contactLink} href="tel:+15149801753">
