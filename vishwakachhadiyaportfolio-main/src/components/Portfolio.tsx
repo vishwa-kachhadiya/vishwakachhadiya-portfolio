@@ -40,7 +40,7 @@ const experience = [
 const publications = [
   {
     title: "CNN-Based Unsupervised Anomaly Detection for Aero Engine Controller Data",
-    meta: "Kachhadiya, V. et al.",
+    meta: "April 2025",
     venue: "IEEE SPACE 2026",
   },
   {
@@ -50,7 +50,7 @@ const publications = [
   },
   {
     title: "Deepfake Detection: Demodulate Synthetic Videos Using Deep Learning Models",
-    meta: "SSIP Grant Recipient",
+    meta: "February 2026",
     venue: "IEEE INDIACom 2025",
   },
 ];
