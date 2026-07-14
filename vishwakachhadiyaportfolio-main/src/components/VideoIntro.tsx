@@ -98,7 +98,6 @@ export default function VideoIntro() {
   return (
     <>
       <section ref={rootRef} className={styles.hero} aria-label="Portfolio intro">
-        {/* Ambient blurred backdrop - stays full-bleed for atmosphere */}
         <video
           ref={ambientRef}
           className={styles.ambientLayer}
@@ -109,68 +108,47 @@ export default function VideoIntro() {
           playsInline
           aria-hidden
         />
+        <video
+          ref={videoRef}
+          className={`${styles.videoLayer} ${loaded ? styles.loaded : ""}`}
+          src={heroVideoUrl}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          onLoadedData={() => setLoaded(true)}
+          onCanPlay={() => setLoaded(true)}
+          onError={() => setFailed(true)}
+        />
+
         <div className={styles.gradient} aria-hidden />
+        <CinematicLayer />
 
-        <div className={styles.heroSplit}>
-          <div className={styles.leftCol}>
-            <p className={styles.tagline}>Portfolio · 2026</p>
-            <h1 className={styles.name}>
-              <span className={styles.nameLine}><span className={styles.nameInner}>Vishwa</span></span>
-              <span className={styles.nameLine}><span className={styles.nameInner}>Kachhadiya</span></span>
-            </h1>
-            <p className={styles.subtitle}>
-              AI / ML Researcher · M.Sc. Computer Science (AI), Université de Montréal
-            </p>
-            <div className={styles.badge}>
-              <span className={styles.badgeDot} />
-              Open to research & AI engineering roles
-            </div>
+        <div
+          className={`${styles.loader} ${loaded || failed ? styles.loaderHidden : ""}`}
+          aria-hidden={loaded || failed}
+          role="status"
+          aria-live="polite"
+        >
+          <div className={styles.loaderGlow} />
+          <div className={styles.loaderRing}>
+            <span className={styles.loaderArc} />
           </div>
+          <p className={styles.loaderLabel}>
+            {failed ? "Intro unavailable" : "Loading intro"}
+          </p>
+        </div>
 
-          <div className={styles.rightCol}>
-            <div className={styles.videoCard}>
-              <video
-                ref={videoRef}
-                className={`${styles.cardVideo} ${loaded ? styles.loaded : ""}`}
-                src={heroVideoUrl}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="auto"
-                onLoadedData={() => setLoaded(true)}
-                onCanPlay={() => setLoaded(true)}
-                onError={() => setFailed(true)}
-              />
-
-              <button
-                type="button"
-                className={styles.playOverlay}
-                onClick={togglePlay}
-                aria-label={playing ? "Pause" : "Play"}
-              >
-                {playing ? (
-                  <svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
-                ) : (
-                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                )}
-              </button>
-
-              <div
-                className={`${styles.cardLoader} ${loaded || failed ? styles.loaderHidden : ""}`}
-                aria-hidden={loaded || failed}
-                role="status"
-                aria-live="polite"
-              >
-                <div className={styles.loaderRing}>
-                  <span className={styles.loaderArc} />
-                </div>
-                <p className={styles.loaderLabel}>
-                  {failed ? "Intro unavailable" : "Loading"}
-                </p>
-              </div>
-            </div>
-          </div>
+        <div className={styles.content}>
+          <p className={styles.tagline}>Portfolio · 2026</p>
+          <h1 className={styles.name}>
+            <span className={styles.nameLine}><span className={styles.nameInner}>Vishwa</span></span>
+            <span className={styles.nameLine}><span className={styles.nameInner}>Kachhadiya</span></span>
+          </h1>
+          <p className={styles.subtitle}>
+            AI / ML Researcher · M.Sc. Computer Science (AI), Université de Montréal
+          </p>
         </div>
 
         <button
@@ -183,6 +161,13 @@ export default function VideoIntro() {
         </button>
 
         <div className={styles.controls}>
+          <button type="button" onClick={togglePlay} className={styles.glass} aria-label={playing ? "Pause" : "Play"}>
+            {playing ? (
+              <svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+            ) : (
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            )}
+          </button>
           <button type="button" onClick={toggleMute} className={styles.glass} aria-label={muted ? "Unmute" : "Mute"}>
             {muted ? (
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><line x1="22" y1="9" x2="16" y2="15"/><line x1="16" y1="9" x2="22" y2="15"/></svg>
