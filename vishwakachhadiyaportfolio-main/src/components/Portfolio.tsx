@@ -262,7 +262,7 @@ export default function Portfolio() {
       {/* CONTACT */}
       <section id="contact" className={styles.contact}>
         <h2 className={styles.contactHeading} data-reveal>
-          Let&rsquo;s build<em>Intelligent</em>Systems for Real-World Impact.
+          Let&rsquo;s build<em>Intelligent Systems </em>
         </h2>
         <p className={styles.lead} style={{ margin: "0 auto" }} data-reveal>
           Open to research collaborations and AI engineering roles.
