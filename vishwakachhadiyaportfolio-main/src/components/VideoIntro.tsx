@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import heroVideo from "/hero.mp4";
 import CinematicLayer from "./CinematicLayer";
 import Portfolio from "./Portfolio";
 import styles from "./VideoIntro.module.css";
+
+const heroVideoUrl = "/hero.mp4"; 
 
 export default function VideoIntro() {
   const rootRef = useRef<HTMLElement>(null);
