@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import heroVideo from "@/assets/intro3.mp4.asset.json";
+import heroVideo from "/hero.mp4";
 import CinematicLayer from "./CinematicLayer";
 import Portfolio from "./Portfolio";
 import styles from "./VideoIntro.module.css";
@@ -100,7 +100,7 @@ export default function VideoIntro() {
         <video
           ref={ambientRef}
           className={styles.ambientLayer}
-          src={heroVideo.url}
+          src={heroVideoUrl}
           autoPlay
           muted
           loop
@@ -110,7 +110,7 @@ export default function VideoIntro() {
         <video
           ref={videoRef}
           className={`${styles.videoLayer} ${loaded ? styles.loaded : ""}`}
-          src={heroVideo.url}
+          src={heroVideoUrl}
           autoPlay
           muted
           loop
