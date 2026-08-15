@@ -56,9 +56,9 @@ export default function VideoIntro()
 
   // Auto-hide sound hint
   useEffect(() => {
-    const t = setTimeout(() => setHintVisible(false), 6000);
-    return () => clearTimeout(t);
-  }, []);
+  const t = setTimeout(() => setLoaded(true), 4000);
+  return () => clearTimeout(t);
+}, []);
 
   // Keep the two videos in sync
   useEffect(() => {
@@ -120,7 +120,7 @@ export default function VideoIntro()
           playsInline
           aria-hidden
         />
-        <video
+       <video
           ref={videoRef}
           className={`${styles.cardVideo} ${loaded ? styles.loaded : ""}`}
           src={heroVideoUrl}
@@ -130,6 +130,8 @@ export default function VideoIntro()
           preload="auto"
           onLoadedData={() => setLoaded(true)}
           onCanPlay={() => setLoaded(true)}
+          onCanPlayThrough={() => setLoaded(true)}
+          onPlaying={() => setLoaded(true)}
           onError={() => setFailed(true)}
           onEnded={handleVideoEnded}
         />
