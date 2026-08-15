@@ -39,19 +39,32 @@ const experience = [
 
 const publications = [
   {
-    title: "CNN-Based Unsupervised Anomaly Detection for Aero Engine Controller Data",
-    meta: "April 2025",
-    venue: "IEEE SPACE 2026",
-  },
-  {
-    title: "Enhancing Semantic Coherence in Gujarati Topic Models by Eliminating Poor Quality Topics",
-    meta: "March 2026",
-    venue: "8th Parul University Conference",
-  },
-  {
-    title: "Deepfake Detection: Demodulate Synthetic Videos Using Deep Learning Models",
+    number: "01",
+    title:
+      "Deepfake Detection: Demodulate Synthetic Videos Using Deep Learning Models",
     meta: "February 2026",
     venue: "IEEE INDIACom 2025",
+    status: "Published",
+    statusType: "published",
+    link: "https://ieeexplore.ieee.org/document/11115707",
+  },
+  {
+    number: "02",
+    title:
+      "Enhancing Semantic Coherence in Gujarati Topic Models by Eliminating Poor Quality Topics",
+    meta: "March 2026",
+    venue: "8th Parul University Conference",
+    status: "Accepted · Publication in Process",
+    statusType: "accepted",
+  },
+  {
+    number: "03",
+    title:
+      "CNN-Based Unsupervised Anomaly Detection for Aero Engine Controller Data",
+    meta: "April 2025",
+    venue: "IEEE SPACE 2026",
+    status: "Accepted · Publication in Process",
+    statusType: "accepted",
   },
 ];
 
@@ -60,16 +73,18 @@ const projects = [
     name: "COVID-19 Analysis Dashboard",
     desc: "Interactive Tableau dashboard visualizing global COVID-19 cases, deaths, and trends with dynamic analytics from a Kaggle dataset.",
     tags: ["Tableau", "Analytics", "Data Viz"],
+    github: "https://github.com/vishwa-kachhadiya/COVID-19-Dashboard",
+  },
+  {
+    name: "Fake Review Detection",
+    desc: "Machine learning-based system for detecting fake and deceptive online reviews using natural language processing and classification techniques.",
+    tags: ["Machine Learning", "NLP", "Python", "Classification"],
+    github: "https://github.com/vishwa-kachhadiya/Fake-Review-Detection",
   },
   {
     name: "AI-Based Multi-Stage Quantitative Trading System",
     desc: "Modular AI-based quantitative trading system using HMM, XGBoost, HRP, and Reinforcement Learning for automated investment decision-making.",
     tags: ["HMM", "XGBoost", "HRP", "Reinforcement Learning"],
-  },
-  {
-    name: "Watchlist Application",
-    desc: "Spring Boot + Hibernate + Thymeleaf web app integrated with the IMDb API for creating, rating, and managing movie watchlists.",
-    tags: ["Spring Boot", "Hibernate", "IMDb API"],
   },
 ];
 
