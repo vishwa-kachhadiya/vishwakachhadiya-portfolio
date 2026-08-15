@@ -42,7 +42,7 @@ const publications = [
     number: "01",
     title:
       "Deepfake Detection: Demodulate Synthetic Videos Using Deep Learning Models",
-    meta: "February 2026",
+    meta: "August 2025",
     venue: "IEEE INDIACom 2025",
     status: "Published",
     statusType: "published",
@@ -61,13 +61,12 @@ const publications = [
     number: "03",
     title:
       "CNN-Based Unsupervised Anomaly Detection for Aero Engine Controller Data",
-    meta: "April 2025",
+    meta: "April 2026",
     venue: "IEEE SPACE 2026",
     status: "Accepted · Publication in Process",
     statusType: "accepted",
   },
 ];
-
 const projects = [
   {
     name: "COVID-19 Analysis Dashboard",
@@ -216,45 +215,128 @@ export default function Portfolio() {
       </section>
 
       {/* PUBLICATIONS */}
-      <section id="publications" className={styles.section}>
-        <p className={styles.eyebrow} data-reveal>Publications</p>
-        <h2 className={styles.heading} data-reveal>
-          Peer-reviewed work at <span className={styles.headingAccent}>IEEE and beyond.</span>
-        </h2>
-        <div className={styles.pubGrid}>
-          {publications.map((p, i) => (
-            <div key={p.title} className={styles.pubItem} data-reveal>
-              <span className={styles.pubIndex}>{String(i + 1).padStart(2, "0")}</span>
-              <div>
-                <h3 className={styles.pubTitle}>{p.title}</h3>
-                <p className={styles.pubMeta}>{p.meta}</p>
-              </div>
-              <span className={styles.pubVenue}>{p.venue}</span>
-            </div>
-          ))}
+<section id="publications" className={styles.section}>
+  <p className={styles.eyebrow} data-reveal>
+    Publications
+  </p>
+
+  <h2 className={styles.heading} data-reveal>
+    Research that moves from{" "}
+    <span className={styles.headingAccent}>
+      ideas to impact.
+    </span>
+  </h2>
+
+  <div className={styles.pubGrid}>
+    {publications.map((p, i) => (
+      <div
+        key={p.title}
+        className={styles.pubItem}
+        data-reveal
+      >
+        <span className={styles.pubIndex}>
+          {p.number || String(i + 1).padStart(2, "0")}
+        </span>
+
+        <div className={styles.pubMain}>
+          <h3 className={styles.pubTitle}>
+            {p.title}
+          </h3>
+
+          <p className={styles.pubMeta}>
+            {p.meta}
+          </p>
         </div>
-      </section>
+
+        <div className={styles.pubRight}>
+          <span className={styles.pubVenue}>
+            {p.venue}
+          </span>
+
+          <span
+            className={`${styles.pubStatus} ${
+              p.statusType === "published"
+                ? styles.published
+                : styles.accepted
+            }`}
+          >
+            {p.status}
+          </span>
+
+          {p.link && (
+            <a
+              href={p.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.pubLink}
+            >
+              VIEW PAPER ↗
+            </a>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
 
       {/* PROJECTS */}
-      <section id="projects" className={styles.section}>
-        <p className={styles.eyebrow} data-reveal>Selected projects</p>
-        <h2 className={styles.heading} data-reveal>
-          Shipped <span className={styles.headingAccent}>end-to-end.</span>
-        </h2>
-        <div className={styles.projectGrid}>
-          {projects.map((p) => (
-            <article key={p.name} className={styles.projectCard} data-reveal>
-              <div>
-                <h3 className={styles.projectName}>{p.name}</h3>
-                <p className={styles.projectDesc}>{p.desc}</p>
-              </div>
-              <div className={styles.projectTags}>
-                {p.tags.map((t) => <span key={t} className={styles.projectTag}>{t}</span>)}
-              </div>
-            </article>
-          ))}
+<section id="projects" className={styles.section}>
+  <p className={styles.eyebrow} data-reveal>
+    Projects
+  </p>
+
+  <h2 className={styles.heading} data-reveal>
+    Selected work &{" "}
+    <span className={styles.headingAccent}>
+      experiments.
+    </span>
+  </h2>
+
+  <div className={styles.pubGrid}>
+    {projects.map((project, i) => (
+      <div
+        key={project.name}
+        className={styles.pubItem}
+        data-reveal
+      >
+        <span className={styles.pubIndex}>
+          {String(i + 1).padStart(2, "0")}
+        </span>
+
+        <div className={styles.pubMain}>
+          <h3 className={styles.pubTitle}>
+            {project.name}
+          </h3>
+
+          <p className={styles.pubMeta}>
+            {project.desc}
+          </p>
+
+          <div className={styles.projectTags}>
+            {project.tags.map((tag) => (
+              <span key={tag} className={styles.projectTag}>
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
-      </section>
+
+        <div className={styles.pubRight}>
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.pubLink}
+            >
+              VIEW PROJECT ↗
+            </a>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
 
       {/* SKILLS */}
       <section id="skills" className={styles.section}>
