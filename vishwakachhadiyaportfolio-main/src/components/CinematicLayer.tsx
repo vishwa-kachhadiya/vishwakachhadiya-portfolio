@@ -3,7 +3,9 @@ import * as THREE from "three";
 
 /**
  * Floating warm-orange + white bokeh particles with additive blending
- * and subtle mouse parallax. Transparent overlay.
+ * and subtle mouse parallax. Transparent overlay. Particles are pushed
+ * away from the center "safe zone" so they frame the subject instead
+ * of covering the face.
  */
 export default function CinematicLayer() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -56,9 +58,28 @@ export default function CinematicLayer() {
     const white = new THREE.Color("#fff2e0");
     const blue = new THREE.Color("#6ba8ff");
 
+    // Keep a clear "safe zone" in the center (where the subject's face sits)
+    // by pushing any particle that lands inside it outward toward the edges.
+    // Zone is generous since faces are often framed large/close in portrait video.
+    const SAFE_ZONE_X = 46;
+    const SAFE_ZONE_Y = 30;
+
     for (let i = 0; i < COUNT; i++) {
-      positions[i * 3 + 0] = (Math.random() - 0.5) * 120;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 70;
+      let x = (Math.random() - 0.5) * 130;
+      let y = (Math.random() - 0.5) * 76;
+
+      if (Math.abs(x) < SAFE_ZONE_X && Math.abs(y) < SAFE_ZONE_Y) {
+        const pushX = Math.abs(x) / SAFE_ZONE_X;
+        const pushY = Math.abs(y) / SAFE_ZONE_Y;
+        if (pushX > pushY) {
+          x = Math.sign(x || 1) * (SAFE_ZONE_X + 6 + Math.random() * 20);
+        } else {
+          y = Math.sign(y || 1) * (SAFE_ZONE_Y + 6 + Math.random() * 14);
+        }
+      }
+
+      positions[i * 3 + 0] = x;
+      positions[i * 3 + 1] = y;
       positions[i * 3 + 2] = (Math.random() - 0.5) * 60;
       scales[i] = Math.random() * 3 + 0.6;
       seeds[i * 2 + 0] = Math.random() * Math.PI * 2;
@@ -116,8 +137,8 @@ export default function CinematicLayer() {
       // Smooth mouse parallax
       mouse.x += (mouse.tx - mouse.x) * 0.04;
       mouse.y += (mouse.ty - mouse.y) * 0.04;
-      camera.position.x = mouse.x * 4;
-      camera.position.y = -mouse.y * 3;
+      camera.position.x = mouse.x * 2;
+      camera.position.y = -mouse.y * 1.5;
       camera.lookAt(0, 0, 0);
 
       // Slow sine oscillation
