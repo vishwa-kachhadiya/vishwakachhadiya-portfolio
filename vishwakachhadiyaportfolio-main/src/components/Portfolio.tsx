@@ -91,10 +91,10 @@ const skills = [
   },
   {
     label: "AI / ML",
-    items: ["PyTorch", "TensorFlow", "Keras", "Scikit-learn", "LangChain", "NumPy", "Pandas"],
+    items: ["PyTorch", "TensorFlow", "Keras", "Scikit-learn", "LangChain","LangGraph","Ollama", "Langsmith", "NumPy", "Pandas"],
   },
   {
-    label: "Engineering",
+    label: "Web / Backend",
     items: ["Django", "Spring Boot", "Hibernate", "Thymeleaf", "Docker", "Git"],
   },
   {
