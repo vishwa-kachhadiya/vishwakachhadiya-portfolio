@@ -82,7 +82,26 @@ export default function VideoIntro() {
       v.pause(); a.pause(); setPlaying(false);
     }
   };
+  const handleVideoEnded = () => {
+    setPlaying(false);
+    window.setTimeout(() => {
+      const v = videoRef.current;
+      const a = ambientRef.current;
+      if (!v || !a) return;
+      v.currentTime = 0;
+      a.currentTime = 0;
+      v.play();
+      a.play();
+      setPlaying(true);
+    }, 20000); // 20 second break
+  };
 
+  const scrollNext = () => {
+    nextRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  return (
+    <>
   const toggleMute = () => {
     const v = videoRef.current;
     if (!v) return;
@@ -104,24 +123,23 @@ export default function VideoIntro() {
           src={heroVideoUrl}
           autoPlay
           muted
-          loop
           playsInline
           aria-hidden
         />
         <video
           ref={videoRef}
-          className={`${styles.videoLayer} ${loaded ? styles.loaded : ""}`}
+          className={`${styles.cardVideo} ${loaded ? styles.loaded : ""}`}
           src={heroVideoUrl}
           autoPlay
           muted
-          loop
           playsInline
           preload="auto"
           onLoadedData={() => setLoaded(true)}
           onCanPlay={() => setLoaded(true)}
           onError={() => setFailed(true)}
+          onEnded={handleVideoEnded}
         />
-
+        
         <div className={styles.gradient} aria-hidden />
         <CinematicLayer />
 
