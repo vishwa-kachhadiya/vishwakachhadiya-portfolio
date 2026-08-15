@@ -42,8 +42,7 @@ const publications = [
     number: "01",
     title:
       "Deepfake Detection: Demodulate Synthetic Videos Using Deep Learning Models",
-    meta: "August 2025",
-    venue: "IEEE INDIACom 2025",
+    meta: "IEEE INDIACom 2025",
     status: "Published",
     statusType: "published",
     link: "https://ieeexplore.ieee.org/document/11115707",
@@ -52,8 +51,7 @@ const publications = [
     number: "02",
     title:
       "Enhancing Semantic Coherence in Gujarati Topic Models by Eliminating Poor Quality Topics",
-    meta: "March 2026",
-    venue: "8th Parul University Conference",
+    meta: "8th Parul University Conference",
     status: "Accepted · Publication in Process",
     statusType: "accepted",
   },
@@ -61,8 +59,7 @@ const publications = [
     number: "03",
     title:
       "CNN-Based Unsupervised Anomaly Detection for Aero Engine Controller Data",
-    meta: "April 2026",
-    venue: "IEEE SPACE 2026",
+    meta: "IEEE SPACE 2026",
     status: "Accepted · Publication in Process",
     statusType: "accepted",
   },
