@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import CinematicLayer from "./CinematicLayer";
 import Portfolio from "./Portfolio";
 import styles from "./VideoIntro.module.css";
 
@@ -94,7 +93,7 @@ export default function VideoIntro()
       v.play();
       a.play();
       setPlaying(true);
-    }, 20000); // 20 second break
+    }, 40000); // 40 second break
   };
 
   const toggleMute = () => {
@@ -135,8 +134,8 @@ export default function VideoIntro()
           onEnded={handleVideoEnded}
         />
         
-        <div className={styles.gradient} aria-hidden />
-        <CinematicLayer />
+      
+
 
         <div
           className={`${styles.loader} ${loaded || failed ? styles.loaderHidden : ""}`}
