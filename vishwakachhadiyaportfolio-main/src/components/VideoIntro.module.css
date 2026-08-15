@@ -23,9 +23,9 @@
 }
 
 .ambientLayer {
-  filter: blur(48px) saturate(1.3) brightness(0.7);
-  transform: scale(1.25);
-  opacity: 0.85;
+  filter: blur(30px) saturate(1.15) brightness(0.8);
+  transform: scale(1.15);
+  opacity: 0.35;
   z-index: 0;
 }
 .heroSplit {
@@ -68,11 +68,17 @@
 }
 
 .cardVideo {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
   opacity: 0;
+  filter: none;
+  transform: none;
   transition: opacity 1.2s ease;
+  display: block;
 }
 
 .cardVideo.loaded {
@@ -168,11 +174,26 @@
   position: absolute;
   inset: 0;
   z-index: 2;
-  background:
-    radial-gradient(ellipse at 50% 40%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 75%, rgba(0, 0, 0, 0.75) 100%),
-    linear-gradient(180deg, rgba(5, 5, 10, 0.35) 0%, rgba(5, 5, 10, 0.05) 25%, rgba(5, 5, 10, 0.05) 70%, rgba(5, 5, 10, 0.55) 100%),
-    linear-gradient(120deg, rgba(255, 120, 40, 0.08), rgba(70, 120, 220, 0.06));
   pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 45%,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.08) 75%,
+      rgba(0, 0, 0, 0.22) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(5, 5, 10, 0.08) 0%,
+      rgba(5, 5, 10, 0.02) 40%,
+      rgba(5, 5, 10, 0.12) 100%
+    ),
+    linear-gradient(
+      120deg,
+      rgba(255, 120, 40, 0.03),
+      rgba(70, 120, 220, 0.02)
+    );
 }
 
 .content {
