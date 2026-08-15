@@ -6,7 +6,8 @@ import styles from "./VideoIntro.module.css";
 
 const heroVideoUrl = "/hero.mp4"; 
 
-export default function VideoIntro() {
+export default function VideoIntro()
+{
   const rootRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const ambientRef = useRef<HTMLVideoElement>(null);
@@ -96,12 +97,6 @@ export default function VideoIntro() {
     }, 20000); // 20 second break
   };
 
-  const scrollNext = () => {
-    nextRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  return (
-    <>
   const toggleMute = () => {
     const v = videoRef.current;
     if (!v) return;
