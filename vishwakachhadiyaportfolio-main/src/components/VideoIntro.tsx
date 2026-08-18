@@ -208,8 +208,31 @@ export default function VideoIntro() {
             <div className={styles.navLinks}>
               <a href="#home">Home</a>
               <a href="#about">About</a>
-              <a href="#experience">Experience</a>
-              <a href="#publications">Publications</a>
+              <a
+                href="#publications"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById("publications")?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  });
+                }}
+              >
+                Publications
+              </a>
+
+              <a
+                href="#experience"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById("experience")?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  });
+                }}
+              >
+                Experience
+              </a>
               <a href="#projects">Projects</a>
               <a href="#toolbox">Skill</a>
               <a href="#contact">Contact</a>
