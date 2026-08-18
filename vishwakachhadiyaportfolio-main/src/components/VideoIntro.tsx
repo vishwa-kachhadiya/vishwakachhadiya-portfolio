@@ -94,15 +94,7 @@ export default function VideoIntro() {
           },
           "-=0.5"
         )
-        .to(
-          `.${styles.actions}`,
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.7,
-          },
-          "-=0.5"
-        )
+        
         .to(
           `.${styles.controls}`,
           {
@@ -330,26 +322,6 @@ export default function VideoIntro() {
               impactful research, and turning ideas into meaningful
               technology.
             </p>
-
-            <div className={styles.actions}>
-              <button
-                type="button"
-                className={styles.primaryButton}
-                onClick={scrollNext}
-              >
-                <span>ABOUT ME</span>
-                <span className={styles.buttonArrow}>↗</span>
-              </button>
-
-              <button
-                type="button"
-                className={styles.secondaryButton}
-                onClick={scrollNext}
-              >
-                <span>VIEW WORK</span>
-                <span className={styles.buttonArrow}>→</span>
-              </button>
-            </div>
           </div>
         </div>
 
