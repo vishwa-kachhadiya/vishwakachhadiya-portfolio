@@ -11,6 +11,7 @@ export default function VideoIntro() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const ambientRef = useRef<HTMLVideoElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);
+  const restartTimeoutRef = useRef<number | null>(null);
 
   const [loaded, setLoaded] = useState(false);
   const [failed, setFailed] = useState(false);
@@ -32,11 +33,19 @@ export default function VideoIntro() {
       p.then(() => {
         setMuted(false);
         setHintVisible(false);
+        setPlaying(true);
       }).catch(() => {
         v.muted = true;
         setMuted(true);
+        setPlaying(true);
       });
     }
+
+    return () => {
+      if (restartTimeoutRef.current !== null) {
+        window.clearTimeout(restartTimeoutRef.current);
+      }
+    };
   }, []);
 
   // Entrance animation
@@ -117,11 +126,14 @@ export default function VideoIntro() {
 
   // Hide sound hint
   useEffect(() => {
-    const t = setTimeout(() => setHintVisible(false), 6000);
-    return () => clearTimeout(t);
+    const t = window.setTimeout(() => {
+      setHintVisible(false);
+    }, 6000);
+
+    return () => window.clearTimeout(t);
   }, []);
 
-  // Keep ambient video synchronized
+  // Keep ambient video synchronized with the main video
   useEffect(() => {
     const v = videoRef.current;
     const a = ambientRef.current;
@@ -139,6 +151,7 @@ export default function VideoIntro() {
     return () => window.clearInterval(id);
   }, []);
 
+  // Play / pause both videos
   const togglePlay = () => {
     const v = videoRef.current;
     const a = ambientRef.current;
@@ -156,10 +169,16 @@ export default function VideoIntro() {
     }
   };
 
+  // When the main video ends:
+  // wait 40 seconds, then play it again.
   const handleVideoEnded = () => {
     setPlaying(false);
 
-    window.setTimeout(() => {
+    if (restartTimeoutRef.current !== null) {
+      window.clearTimeout(restartTimeoutRef.current);
+    }
+
+    restartTimeoutRef.current = window.setTimeout(() => {
       const v = videoRef.current;
       const a = ambientRef.current;
 
@@ -175,6 +194,7 @@ export default function VideoIntro() {
     }, 40000);
   };
 
+  // Mute / unmute
   const toggleMute = () => {
     const v = videoRef.current;
 
@@ -185,6 +205,7 @@ export default function VideoIntro() {
     setHintVisible(false);
   };
 
+  // Scroll to portfolio
   const scrollNext = () => {
     nextRef.current?.scrollIntoView({
       behavior: "smooth",
@@ -192,37 +213,35 @@ export default function VideoIntro() {
   };
 
   return (
-    
     <>
-        <section
-          ref={rootRef}
-          id="home"
-          className={styles.hero}
-          aria-label="Portfolio introduction"
-        >
-        <nav className={styles.navbar}>
-  <a href="#home" className={styles.logo}>
-    VK
-  </a>
+      {/* =========================
+          FIXED NAVIGATION
+          ========================= */}
+      <nav className={styles.navbar}>
+        <a href="#home" className={styles.logo}>
+          VK
+        </a>
 
-  <div className={styles.navLinks}>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#publications">Publications</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#toolbox">Skill</a>
-    <a href="#contact">Contact</a>
-  </div>
-</nav>
+        <div className={styles.navLinks}>
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#publications">Publications</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#toolbox">Skill</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
 
-<section
-  ref={rootRef}
-  id="home"
-  className={styles.hero}
->
-  {/* rest of hero */}
-</section>
+      {/* =========================
+          HERO SECTION
+          ========================= */}
+      <section
+        ref={rootRef}
+        id="home"
+        className={styles.hero}
+        aria-label="Portfolio introduction"
+      >
         {/* Soft ambient background */}
         <video
           ref={ambientRef}
@@ -268,6 +287,8 @@ export default function VideoIntro() {
             loaded || failed ? styles.loaderHidden : ""
           }`}
           aria-hidden={loaded || failed}
+          role="status"
+          aria-live="polite"
         >
           <div className={styles.loaderGlow} />
 
@@ -298,7 +319,7 @@ export default function VideoIntro() {
             </h1>
 
             <p className={styles.subtitle}>
-              AI / ML RESEARCHER & DEVELOPER
+              AI / ML RESEARCHER &amp; DEVELOPER
             </p>
 
             <div className={styles.accentLine} />
@@ -344,8 +365,9 @@ export default function VideoIntro() {
           Tap for sound
         </button>
 
-        {/* Controls */}
+        {/* Video controls */}
         <div className={styles.controls}>
+          {/* Mute button */}
           <button
             type="button"
             onClick={toggleMute}
@@ -381,6 +403,7 @@ export default function VideoIntro() {
             )}
           </button>
 
+          {/* Play / pause button */}
           <button
             type="button"
             onClick={togglePlay}
@@ -389,8 +412,20 @@ export default function VideoIntro() {
           >
             {playing ? (
               <svg viewBox="0 0 24 24" fill="currentColor">
-                <rect x="6" y="5" width="4" height="14" rx="1" />
-                <rect x="14" y="5" width="4" height="14" rx="1" />
+                <rect
+                  x="6"
+                  y="5"
+                  width="4"
+                  height="14"
+                  rx="1"
+                />
+                <rect
+                  x="14"
+                  y="5"
+                  width="4"
+                  height="14"
+                  rx="1"
+                />
               </svg>
             ) : (
               <svg viewBox="0 0 24 24" fill="currentColor">
@@ -417,6 +452,9 @@ export default function VideoIntro() {
         </button>
       </section>
 
+      {/* =========================
+          PORTFOLIO CONTENT
+          ========================= */}
       <div ref={nextRef}>
         <Portfolio />
       </div>
