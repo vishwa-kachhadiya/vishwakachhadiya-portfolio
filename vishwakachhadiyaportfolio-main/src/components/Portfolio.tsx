@@ -43,7 +43,7 @@ const publications = [
     title:
       "Deepfake Detection: Demodulate Synthetic Videos Using Deep Learning Models",
     meta: "IEEE INDIACom 2025",
-    status: "Published",
+    status: "Published ·",
     statusType: "published",
     link: "https://ieeexplore.ieee.org/document/11115707",
   },
