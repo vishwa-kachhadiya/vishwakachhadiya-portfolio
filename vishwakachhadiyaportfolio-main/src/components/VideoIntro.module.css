@@ -114,7 +114,7 @@
 .cardVideo {
   position: absolute;
   inset: 0;
-
+  pointer-events: none;
   width: 100%;
   height: 100%;
 
@@ -823,4 +823,89 @@
   .loaderArc {
     animation: none;
   }
+}
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 76px;
+
+  z-index: 99999;
+  pointer-events: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 clamp(1.5rem, 5vw, 5rem);
+
+  background: rgba(5, 5, 5, 0.45);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.navLinks {
+  position: relative;
+  z-index: 100000;
+
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2.5vw, 2.5rem);
+
+  pointer-events: auto;
+}
+
+.navLinks a {
+  position: relative;
+  z-index: 100001;
+
+  pointer-events: auto;
+
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition: color 0.3s ease;
+}
+
+.navLinks a:hover {
+  color: #fff;
+}
+
+.logo {
+  color: #fff;
+  font-family: "Playfair Display", "Times New Roman", serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2.5vw, 2.5rem);
+}
+
+.navLinks a {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navLinks a:hover {
+  color: #fff;
 }
