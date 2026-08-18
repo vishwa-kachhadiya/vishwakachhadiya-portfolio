@@ -1,15 +1,23 @@
 .hero {
   position: relative;
-  min-height: 100svh;
-  height: auto;
+  width: 100%;
+  min-height: 100vh;
+  height: 100vh;
   overflow: hidden;
-
-  display: flex;
-  align-items: center;
-
-  padding: 100px clamp(2rem, 6vw, 6rem) 80px;
-
-  box-sizing: border-box;
+  isolation: isolate;
+  color: #fff;
+  background:
+    radial-gradient(
+      ellipse at 70% 50%,
+      rgba(255, 110, 35, 0.12),
+      transparent 42%
+    ),
+    radial-gradient(
+      ellipse at 20% 80%,
+      rgba(100, 70, 40, 0.1),
+      transparent 45%
+    ),
+    #050505;
 }
 
 /* ------------------------------------------------ */
@@ -54,14 +62,13 @@
 
 .content {
   position: relative;
-  z-index: 10;
+  z-index: 5;
 
-  width: min(800px, 100%);
+  width: min(48%, 700px);
 
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding-top: 40px;
 
   pointer-events: auto;
 }
@@ -107,7 +114,7 @@
 .cardVideo {
   position: absolute;
   inset: 0;
-  pointer-events: none;
+
   width: 100%;
   height: 100%;
 
@@ -214,11 +221,11 @@
     "Times New Roman",
     serif;
 
-font-size: clamp(4.5rem, 9vw, 9rem);
-  line-height: 0.82;
+  font-size: clamp(4rem, 8vw, 8.5rem);
+  line-height: 0.88;
 
   font-weight: 700;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.055em;
 
   color: #fff;
 
@@ -228,7 +235,7 @@ font-size: clamp(4.5rem, 9vw, 9rem);
 
 .nameLine {
   display: block;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .nameInner {
@@ -682,7 +689,7 @@ font-size: clamp(4.5rem, 9vw, 9rem);
     height: auto;
     min-height: 100vh;
 
-    overflow: visible;
+    overflow: hidden;
   }
 
   .videoArea {
@@ -816,89 +823,4 @@ font-size: clamp(4.5rem, 9vw, 9rem);
   .loaderArc {
     animation: none;
   }
-}
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-
-  height: 76px;
-
-  z-index: 99999;
-  pointer-events: auto;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  padding: 0 clamp(1.5rem, 5vw, 5rem);
-
-  background: rgba(5, 5, 5, 0.45);
-
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-}
-
-.navLinks {
-  position: relative;
-  z-index: 100000;
-
-  display: flex;
-  align-items: center;
-  gap: clamp(1rem, 2.5vw, 2.5rem);
-
-  pointer-events: auto;
-}
-
-.navLinks a {
-  position: relative;
-  z-index: 100001;
-
-  pointer-events: auto;
-
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.68rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  text-decoration: none;
-
-  cursor: pointer;
-
-  transition: color 0.3s ease;
-}
-
-.navLinks a:hover {
-  color: #fff;
-}
-
-.logo {
-  color: #fff;
-  font-family: "Playfair Display", "Times New Roman", serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.navLinks {
-  display: flex;
-  align-items: center;
-  gap: clamp(1rem, 2.5vw, 2.5rem);
-}
-
-.navLinks a {
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.68rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.navLinks a:hover {
-  color: #fff;
 }
