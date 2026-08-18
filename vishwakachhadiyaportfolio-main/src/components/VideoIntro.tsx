@@ -201,21 +201,28 @@ export default function VideoIntro() {
           aria-label="Portfolio introduction"
         >
         <nav className={styles.navbar}>
-          <a href="#home" className={styles.logo}>
-            VK
-          </a>
+  <a href="#home" className={styles.logo}>
+    VK
+  </a>
 
-          <div className={styles.navLinks}>
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#publications">Publications</a>
-            <a href="#experience">Experience</a>
-            <a href="#projects">Projects</a>
-            <a href="#toolbox">Skill</a>
-            <a href="#contact">Contact</a>
-          </div>
-        </nav>
+  <div className={styles.navLinks}>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#publications">Publications</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#toolbox">Skill</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
 
+<section
+  ref={rootRef}
+  id="home"
+  className={styles.hero}
+>
+  {/* rest of hero */}
+</section>
         {/* Soft ambient background */}
         <video
           ref={ambientRef}
