@@ -200,44 +200,21 @@ export default function VideoIntro() {
           className={styles.hero}
           aria-label="Portfolio introduction"
         >
-          <nav className={styles.navbar}>
-            <a href="#home" className={styles.logo}>
-              VK
-            </a>
+        <nav className={styles.navbar}>
+          <a href="#home" className={styles.logo}>
+            VK
+          </a>
 
-            <div className={styles.navLinks}>
-              <a href="#home">Home</a>
-              <a href="#about">About</a>
-              <a href="#publications">Publications</a>
-              <a
-                href="#projects"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById("projects")?.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start",
-                  });
-                }}
-              >
-                Projects
-              </a>
-
-              <a
-                href="#experience"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById("experience")?.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start",
-                  });
-                }}
-              >
-                Experience
-              </a>
-              <a href="#toolbox">Skill</a>
-              <a href="#contact">Contact</a>
-            </div>
-          </nav>
+          <div className={styles.navLinks}>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#publications">Publications</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#toolbox">Skill</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </nav>
 
         {/* Soft ambient background */}
         <video
